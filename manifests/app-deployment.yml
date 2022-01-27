@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reco-app
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reco-app
+  template:
+    metadata:
+      labels:
+        app: reco-app
+    spec:
+      containers:
+        - name: reco-app-k8s
+          image: "silverstone1903/reco-app-k8s:latest"
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+            requests:
+              memory: 500M
+              cpu: "500m"

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: monitoring
+  name: reco-service
+  labels:
+    name: reco-service
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    app: reco-app
+  type: LoadBalancer
